@@ -512,9 +512,10 @@ namespace Launcher
 
         private void Config_pb_Click(object sender, EventArgs e)
         {
+            ConfigForm.Location = new Point(Location.X + Config_pb.Location.X - 188, Location.Y + 10);
             if (ConfigForm.Visible) ConfigForm.Hide();
             else ConfigForm.Show(Program.PForm);
-            ConfigForm.Location = new Point(Location.X + Config_pb.Location.X - 183, Location.Y + 36);
+            ConfigForm.Location = new Point(Location.X + Config_pb.Location.X - 188, Location.Y + 10);
         }
 
         private void TotalProg_pb_SizeChanged(object sender, EventArgs e)
@@ -654,11 +655,11 @@ namespace Launcher
 
         private void AMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-                MoveOldFilesToCurrent();
+            MoveOldFilesToCurrent();
 
-                Launch_pb?.Dispose();
-                Close_pb?.Dispose();
-                Environment.Exit(0);
+            Launch_pb?.Dispose();
+            Close_pb?.Dispose();
+            Environment.Exit(0);
         }
 
         private static string[] suffixes = new[] { " B", " KB", " MB", " GB", " TB", " PB" };
@@ -708,5 +709,5 @@ namespace Launcher
                     File.Move(oldFilename, originalFilename);
             }
         }
-    } 
+    }
 }
