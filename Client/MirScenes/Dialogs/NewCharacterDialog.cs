@@ -28,34 +28,6 @@ namespace Client.MirScenes.Dialogs
         public MirClass Class;
         public MirGender Gender;
 
-        #region Descriptions
-        public const string WarriorDescription =
-            "Warriors are a class of great strength and vitality. They are not easily killed in battle and have the advantage of being able to use" +
-            " a variety of heavy weapons and Armour. Therefore, Warriors favor attacks that are based on melee physical damage. They are weak in ranged" +
-            " attacks, however the variety of equipment that are developed specifically for Warriors complement their weakness in ranged combat.";
-
-        public const string WizardDescription =
-            "Wizards are a class of low strength and stamina, but have the ability to use powerful spells. Their offensive spells are very effective, but" +
-            " because it takes time to cast these spells, they're likely to leave themselves open for enemy's attacks. Therefore, the physically weak wizards" +
-            " must aim to attack their enemies from a safe distance.";
-
-        public const string TaoistDescription =
-            "Taoists are well disciplined in the study of Astronomy, Medicine, and others aside from Mu-Gong. Rather then directly engaging the enemies, their" +
-            " specialty lies in assisting their allies with support. Taoists can summon powerful creatures and have a high resistance to magic, and is a class" +
-            " with well balanced offensive and defensive abilities.";
-
-        public const string AssassinDescription =
-            "Assassins are members of a secret organization and their history is relatively unknown. They're capable of hiding themselves and performing attacks" +
-            " while being unseen by others, which naturally makes them excellent at making fast kills. It is necessary for them to avoid being in battles with" +
-            " multiple enemies due to their weak vitality and strength.";
-
-        public const string ArcherDescription =
-            "Archers are a class of great accuracy and strength, using their powerful skills with bows to deal extraordinary damage from range. Much like" +
-            " wizards, they rely on their keen instincts to dodge oncoming attacks as they tend to leave themselves open to frontal attacks. However, their" +
-            " physical prowess and deadly aim allows them to instil fear into anyone they hit.";
-
-        #endregion
-
         public NewCharacterDialog()
         {
             Index = 73;
@@ -244,7 +216,7 @@ namespace Client.MirScenes.Dialogs
                 Location = new Point(279, 70),
                 Parent = this,
                 Size = new Size(278, 170),
-                Text = WarriorDescription,
+                Text = GameLanguage.WarriorsDes
             };
         }
 
@@ -295,7 +267,7 @@ namespace Client.MirScenes.Dialogs
             OKButton.Enabled = false;
 
             if (OnCreateCharacter != null)
-                OnCreateCharacter.Invoke(this, EventArgs.Empty);            
+                OnCreateCharacter.Invoke(this, EventArgs.Empty);
         }
 
         private void UpdateInterface()
@@ -323,27 +295,27 @@ namespace Client.MirScenes.Dialogs
             {
                 case MirClass.Warrior:
                     WarriorButton.Index = 2427;
-                    Description.Text = WarriorDescription;
+                    Description.Text = GameLanguage.WarriorsDes;
                     CharacterDisplay.Index = (byte)Gender == 0 ? 20 : 300; //220 : 500;
                     break;
                 case MirClass.Wizard:
                     WizardButton.Index = 2430;
-                    Description.Text = WizardDescription;
+                    Description.Text = GameLanguage.WizardDes;
                     CharacterDisplay.Index = (byte)Gender == 0 ? 40 : 320; //240 : 520;
                     break;
                 case MirClass.Taoist:
                     TaoistButton.Index = 2433;
-                    Description.Text = TaoistDescription;
+                    Description.Text = GameLanguage.TaoistDes;
                     CharacterDisplay.Index = (byte)Gender == 0 ? 60 : 340; //260 : 540;
                     break;
                 case MirClass.Assassin:
                     AssassinButton.Index = 2436;
-                    Description.Text = AssassinDescription;
+                    Description.Text = GameLanguage.AssassinDes;
                     CharacterDisplay.Index = (byte)Gender == 0 ? 80 : 360; //280 : 560;
                     break;
                 case MirClass.Archer:
                     ArcherButton.Index = 2439;
-                    Description.Text = ArcherDescription;
+                    Description.Text = GameLanguage.ArcherDes;
                     CharacterDisplay.Index = (byte)Gender == 0 ? 100 : 140; //160 : 180;
                     break;
             }

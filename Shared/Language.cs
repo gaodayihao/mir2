@@ -1,4 +1,6 @@
-﻿public class GameLanguage
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+public class GameLanguage
 {
     //Client
     public static string PetMode_Both = "[Pet: Attack and Move]",
@@ -110,7 +112,7 @@
                          MaxCombine = "Max Combine Count : {0}{1}Shift + Left click to split the stack",
                          Count = " Count {0}",
                          ExtraSlots8 = "Are you sure you would like to buy 8 extra slots for 1,000,000 gold?" +
-                         "Next purchase you can unlock 4 extra slots up to a maximum of 40 slots.",
+                                       "Next purchase you can unlock 4 extra slots up to a maximum of 40 slots.",
                          ExtraSlots4 = "Are you sure you would like to unlock 4 extra slots? for gold: {0:###,###}",
 
                          Chat_All = "All",
@@ -144,20 +146,20 @@
                          ToManyCharacters = "You cannot make anymore then {0} Characters.",
                          CharacterNameExists = "A Character with this name already exists.",
                          WarriorsDes = "Warriors are a class of great strength and vitality. They are not easily killed in battle and have the advantage of being able to use" +
-                                        " a variety of heavy weapons and Armour. Therefore, Warriors favor attacks that are based on melee physical damage. They are weak in ranged" +
-                                        " attacks, however the variety of equipment that are developed specifically for Warriors complement their weakness in ranged combat.",
+                                       " a variety of heavy weapons and Armour. Therefore, Warriors favor attacks that are based on melee physical damage. They are weak in ranged" +
+                                       " attacks, however the variety of equipment that are developed specifically for Warriors complement their weakness in ranged combat.",
                          WizardDes = "Wizards are a class of low strength and stamina, but have the ability to use powerful spells. Their offensive spells are very effective, but" +
-                                        " because it takes time to cast these spells, they're likely to leave themselves open for enemy's attacks. Therefore, the physically weak wizards" +
-                                        " must aim to attack their enemies from a safe distance.",
+                                     " because it takes time to cast these spells, they're likely to leave themselves open for enemy's attacks. Therefore, the physically weak wizards" +
+                                     " must aim to attack their enemies from a safe distance.",
                          TaoistDes = "Taoists are well disciplined in the study of Astronomy, Medicine, and others aside from Mu-Gong. Rather then directly engaging the enemies, their" +
-                                        " specialty lies in assisting their allies with support. Taoists can summon powerful creatures and have a high resistance to magic, and is a class" +
-                                        " with well balanced offensive and defensive abilities.",
+                                     " specialty lies in assisting their allies with support. Taoists can summon powerful creatures and have a high resistance to magic, and is a class" +
+                                     " with well balanced offensive and defensive abilities.",
                          AssassinDes = "Assassins are members of a secret organization and their history is relatively unknown. They're capable of hiding themselves and performing attacks" +
-                                        " while being unseen by others, which naturally makes them excellent at making fast kills. It is necessary for them to avoid being in battles with" +
-                                        " multiple enemies due to their weak vitality and strength.",
+                                       " while being unseen by others, which naturally makes them excellent at making fast kills. It is necessary for them to avoid being in battles with" +
+                                       " multiple enemies due to their weak vitality and strength.",
                          ArcherDes = "Archers are a class of great accuracy and strength, using their powerful skills with bows to deal extraordinary damage from range. Much like" +
-                                        " wizards, they rely on their keen instincts to dodge oncoming attacks as they tend to leave themselves open to frontal attacks. However, their" +
-                                        " physical prowess and deadly aim allows them to instil fear into anyone they hit.",
+                                     " wizards, they rely on their keen instincts to dodge oncoming attacks as they tend to leave themselves open to frontal attacks. However, their" +
+                                     " physical prowess and deadly aim allows them to instil fear into anyone they hit.",
                          DateSent = "Date Sent : {0}",
                          Send = "Send",
                          Reply = "Reply",
@@ -235,7 +237,46 @@
                          RequestMarriage = "Request Marriage",
                          RequestDivorce = "Request Divorce",
                          MailLover = "Mail Lover",
-                         WhisperLover = "Whisper Lover";
+                         WhisperLover = "Whisper Lover",
+                         GroupAlreadyHasMaximumMembers = "Your group already has the maximum number of members.",
+                         NotLeaderOfGroup = "You are not the leader of your group.",
+                         MagicDescription = "{0}\nMP: {1}\nCooldown: {2}\nKey: {3}",
+                         MiniMap = "MiniMap ({0})",
+                         InviteToGroup = "Invite to Group",
+                         AddToFriendsList = "Add to Friends List",
+                         SendMail = "Send Mail",
+                         TradeOtherCharacter = "Trade",
+                         Observe = "Observe",
+                         Keyboard = "Keyboard ({0})",
+                         HPMPMode1 = "[HP/MP Mode 1]",
+                         HPMPMode2 = "[HP/MP Mode 2]",
+                         NewMovementStyle = "[New Movement Style]",
+                         OldMovementStyle = "[Old Movement Style]",
+                         Spell_Fencing = "Fencing \n\nHitting accuracy will be increased in accordance\nwith practice level.\nPassive Skill\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_Slaying = "Slaying \n\nHitting accuracy and destructive power will\nbe increased in accordance with practive level.\nPassive Skill\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_Thrusting = "Dark Damage\nThrusting \n\nIncreases the reach of your hits destructive power\nwill increase in accordance with practive level.\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_Rage = "Rage \n\nMana Cost {2}\n\nEnhances your inner force to increase its power\nfor a certain time. Attack power and duration time\nwill depend on the skill level. Once the skill has been used\n you will have to wait to use it again.\n\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_ProtectionField = "ProtectionField \n\nMana Cost {2}\n\nConcentrates inner force and spreads it to all\n the parts of your body. This will enhance the\nprotection from enemies. Defense power and duration\nwill be depend on the skill level. Once the skill\n has been used, you will have to wait to use it again.\n\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_HalfMoon = "Wind Damage\nHalfMoon \n\nCause damage to mobs in a semi circle with\nthe shock waves from your fast moving weapon.\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_FlamingSword = "Fire Damage\nFlamingSword \n\nCause additional damage by summoning the spirit\nof fire into weapon\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_ShoulderDash = "ShoulderDash \n\nA warrior can push away mobs by charging\nthem with his shoulder, inflicting damage\nif they hit any obstacle.\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_CrossHalfMoon = "Wind Damage\nCrossHalfMoon \n\nA warrior uses two powerfull waves of Half Moon\nto inflict damage on all mobs stood next to them.\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_TwinDrakeBlade = "Dark Damage\nTwinDrakeBlade \n\nThe art of making multiple power attacks. It has a\nlow chance of stunning the mob temporarly. Stunned\nmobs get 1.5 times more damage inflicted.\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_Entrapment = "Entrapment \n\nParalyses mobs and draws them to the caster.\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_LionRoar = "LionRoar \n\nParalyses mobs , duration increases with skill level.\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_CounterAttack = "CounterAttack \n\nMana Cost {2}\n\nIncreases AC and AMC for a short period of time\nChance to defend an attack and counter.\n\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_ImmortalSkin = "ImmortalSkin \n\nMana Cost {2}\n\nIncrease defense to reduce attacks.\n\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_Fury = "Fury \n\nMana Cost {2}\n\nIncreases the warriors Accuracy for a set period of time.\n\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_SlashingBurst = "SlashingBurst \n\nMana Cost {2}\n\nAllows The Warrior to Jump 1 Space Over a Obejct or Monster.\n\nCurrent Skill Level {0}\nNext Level {1}",
+                         Spell_BladeAvalanche = "Ice Damage\nBladeAvalanche \n\n3-Way Thrusting.\nCurrent Skill Level {0}\nNext Level {1}",
+                         RequiredClassNone = "None",
+                         RequiredClassWarrior = "Warrior",
+                         RequiredClassWizard = "Wizard",
+                         RequiredClassTaoist = "Taoist",
+                         RequiredClassAssassin = "Assassin",
+                         RequiredClassArcher = "Archer",
+                         SkillModeDash = "[Skill Mode: ~]",
+                         SkillModeControl = "[Skill Mode: Ctrl]";
 
     //Server
     public static string Welcome = "Welcome to the {0} Server.",
@@ -348,7 +389,7 @@
 
         GameLanguage.YouGained = reader.ReadString("Language", "YouGained", GameLanguage.YouGained);
         GameLanguage.YouGained2 = reader.ReadString("Language", "YouGained2", GameLanguage.YouGained2);
-        GameLanguage.ExperienceGained = reader.ReadString("Language", "ExperienceGained", GameLanguage.ExperienceGained);        
+        GameLanguage.ExperienceGained = reader.ReadString("Language", "ExperienceGained", GameLanguage.ExperienceGained);
         GameLanguage.LevelUp = reader.ReadString("Language", "LevelUp", GameLanguage.LevelUp);
 
         GameLanguage.HeroInventory = reader.ReadString("Language", "HeroInventory", GameLanguage.HeroInventory);
@@ -519,6 +560,48 @@
         GameLanguage.RequestDivorce = reader.ReadString("Language", "RequestDivorce", GameLanguage.RequestDivorce);
         GameLanguage.MailLover = reader.ReadString("Language", "MailLover", GameLanguage.MailLover);
         GameLanguage.WhisperLover = reader.ReadString("Language", "WhisperLover", GameLanguage.WhisperLover);
+
+        SkillModeDash = reader.ReadString("Language", "SkillModeDash", SkillModeDash);
+        SkillModeControl = reader.ReadString("Language", "SkillModeControl", SkillModeControl);
+        MagicDescription = reader.ReadString("Language", "MagicDescription", MagicDescription);
+        MiniMap = reader.ReadString("Language", "MiniMap", MiniMap);
+        GroupAlreadyHasMaximumMembers = reader.ReadString("Language", "GroupAlreadyHasMaximumMembers", GroupAlreadyHasMaximumMembers);
+        NotLeaderOfGroup = reader.ReadString("Language", "NotLeaderOfGroup", NotLeaderOfGroup);
+        HPMPMode1 = reader.ReadString("Language", "HPMPMode1", HPMPMode1);
+        HPMPMode2 = reader.ReadString("Language", "HPMPMode2", HPMPMode2);
+        InviteToGroup = reader.ReadString("Language", "InviteToGroup", InviteToGroup);
+        AddToFriendsList = reader.ReadString("Language", "AddToFriendsList", AddToFriendsList);
+        SendMail = reader.ReadString("Language", "SendMail", SendMail);
+        TradeOtherCharacter = reader.ReadString("Language", "TradeOtherCharacter", TradeOtherCharacter);
+        Observe = reader.ReadString("Language", "Observe", Observe);
+        NewMovementStyle = reader.ReadString("Language", "NewMovementStyle", NewMovementStyle);
+        OldMovementStyle = reader.ReadString("Language", "OldMovementStyle", OldMovementStyle);
+        Keyboard = reader.ReadString("Language", "Keyboard", Keyboard);
+
+        RequiredClassNone = reader.ReadString("Language", "RequiredClassNone", RequiredClassNone);
+        RequiredClassWarrior = reader.ReadString("Language", "RequiredClassWarrior", RequiredClassWarrior);
+        RequiredClassWizard = reader.ReadString("Language", "RequiredClassWizard", RequiredClassWizard);
+        RequiredClassTaoist = reader.ReadString("Language", "RequiredClassTaoist", RequiredClassTaoist);
+        RequiredClassAssassin = reader.ReadString("Language", "RequiredClassAssassin", RequiredClassAssassin);
+        RequiredClassArcher = reader.ReadString("Language", "RequiredClassArcher", RequiredClassArcher);
+
+        Spell_Fencing = reader.ReadString("Language", "Spell_Fencing", Spell_Fencing);
+        Spell_Slaying = reader.ReadString("Language", "Spell_Slaying", Spell_Slaying);
+        Spell_Thrusting = reader.ReadString("Language", "Spell_Thrusting", Spell_Thrusting);
+        Spell_Rage = reader.ReadString("Language", "Spell_Rage", Spell_Rage);
+        Spell_ProtectionField = reader.ReadString("Language", "Spell_ProtectionField", Spell_ProtectionField);
+        Spell_HalfMoon = reader.ReadString("Language", "Spell_HalfMoon", Spell_HalfMoon);
+        Spell_FlamingSword = reader.ReadString("Language", "Spell_FlamingSword", Spell_FlamingSword);
+        Spell_ShoulderDash = reader.ReadString("Language", "Spell_ShoulderDash", Spell_ShoulderDash);
+        Spell_CrossHalfMoon = reader.ReadString("Language", "Spell_CrossHalfMoon", Spell_CrossHalfMoon);
+        Spell_TwinDrakeBlade = reader.ReadString("Language", "Spell_TwinDrakeBlade", Spell_TwinDrakeBlade);
+        Spell_Entrapment = reader.ReadString("Language", "Spell_Entrapment", Spell_Entrapment);
+        Spell_LionRoar = reader.ReadString("Language", "Spell_LionRoar", Spell_LionRoar);
+        Spell_CounterAttack = reader.ReadString("Language", "Spell_CounterAttack", Spell_CounterAttack);
+        Spell_ImmortalSkin = reader.ReadString("Language", "Spell_ImmortalSkin", Spell_ImmortalSkin);
+        Spell_Fury = reader.ReadString("Language", "Spell_Fury", Spell_Fury);
+        Spell_SlashingBurst = reader.ReadString("Language", "Spell_SlashingBurst", Spell_SlashingBurst);
+        Spell_BladeAvalanche = reader.ReadString("Language", "Spell_BladeAvalanche", Spell_BladeAvalanche);
     }
 
 
@@ -593,7 +676,7 @@
 
         reader.Write("Language", "YouGained", GameLanguage.YouGained);
         reader.Write("Language", "YouGained2", GameLanguage.YouGained2);
-        reader.Write("Language", "ExperienceGained", GameLanguage.ExperienceGained);        
+        reader.Write("Language", "ExperienceGained", GameLanguage.ExperienceGained);
         reader.Write("Language", "LevelUp", GameLanguage.LevelUp);
 
         reader.Write("Language", "HeroInventory", GameLanguage.Inventory);
@@ -756,6 +839,48 @@
         reader.Write("Language", "RequestDivorce", GameLanguage.RequestDivorce);
         reader.Write("Language", "MailLover", GameLanguage.MailLover);
         reader.Write("Language", "WhisperLover", GameLanguage.WhisperLover);
+
+        reader.Write("Language", "SkillModeDash", SkillModeDash);
+        reader.Write("Language", "SkillModeControl", SkillModeControl);
+        reader.Write("Language", "MagicDescription", MagicDescription);
+        reader.Write("Language", "MiniMap", MiniMap);
+        reader.Write("Language", "GroupAlreadyHasMaximumMembers", GroupAlreadyHasMaximumMembers);
+        reader.Write("Language", "NotLeaderOfGroup", NotLeaderOfGroup);
+        reader.Write("Language", "HPMPMode1", HPMPMode1);
+        reader.Write("Language", "HPMPMode2", HPMPMode2);
+        reader.Write("Language", "InviteToGroup", InviteToGroup);
+        reader.Write("Language", "AddToFriendsList", AddToFriendsList);
+        reader.Write("Language", "SendMail", SendMail);
+        reader.Write("Language", "TradeOtherCharacter", TradeOtherCharacter);
+        reader.Write("Language", "Observe", Observe);
+        reader.Write("Language", "NewMovementStyle", NewMovementStyle);
+        reader.Write("Language", "OldMovementStyle", OldMovementStyle);
+        reader.Write("Language", "Keyboard", Keyboard);
+
+        reader.Write("Language", "RequiredClassNone", RequiredClassNone);
+        reader.Write("Language", "RequiredClassWarrior", RequiredClassWarrior);
+        reader.Write("Language", "RequiredClassWizard", RequiredClassWizard);
+        reader.Write("Language", "RequiredClassTaoist", RequiredClassTaoist);
+        reader.Write("Language", "RequiredClassAssassin", RequiredClassAssassin);
+        reader.Write("Language", "RequiredClassArcher", RequiredClassArcher);
+
+        reader.Write("Language", "Spell_Fencing", Spell_Fencing);
+        reader.Write("Language", "Spell_Slaying", Spell_Slaying);
+        reader.Write("Language", "Spell_Thrusting", Spell_Thrusting);
+        reader.Write("Language", "Spell_Rage", Spell_Rage);
+        reader.Write("Language", "Spell_ProtectionField", Spell_ProtectionField);
+        reader.Write("Language", "Spell_HalfMoon", Spell_HalfMoon);
+        reader.Write("Language", "Spell_FlamingSword", Spell_FlamingSword);
+        reader.Write("Language", "Spell_ShoulderDash", Spell_ShoulderDash);
+        reader.Write("Language", "Spell_CrossHalfMoon", Spell_CrossHalfMoon);
+        reader.Write("Language", "Spell_TwinDrakeBlade", Spell_TwinDrakeBlade);
+        reader.Write("Language", "Spell_Entrapment", Spell_Entrapment);
+        reader.Write("Language", "Spell_LionRoar", Spell_LionRoar);
+        reader.Write("Language", "Spell_CounterAttack", Spell_CounterAttack);
+        reader.Write("Language", "Spell_ImmortalSkin", Spell_ImmortalSkin);
+        reader.Write("Language", "Spell_Fury", Spell_Fury);
+        reader.Write("Language", "Spell_SlashingBurst", Spell_SlashingBurst);
+        reader.Write("Language", "Spell_BladeAvalanche", Spell_BladeAvalanche);
     }
 
 

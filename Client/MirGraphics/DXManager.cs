@@ -149,7 +149,7 @@ namespace Client.MirGraphics
             CreateLights();
         }
 
-        private unsafe static void CreateLights()
+        private static void CreateLights()
         {
 
             for (int i = Lights.Count - 1; i >= 0; i--)

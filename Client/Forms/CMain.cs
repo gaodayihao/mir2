@@ -579,7 +579,7 @@ namespace Client
 
             if (MirScene.ActiveScene == GameScene.Scene)
             {
-                GameScene.Scene.MapControl.FloorValid = false; 
+                GameScene.Scene.MapControl.FloorValid = false;
                 GameScene.Scene.TextureValid = false;
             }
 
@@ -654,13 +654,13 @@ namespace Client
 
             Program.Form.CenterToScreen();
         }
-            
+
 
         #region ScreenCapture
 
         //private Bitmap CaptureScreen()
         //{
-            
+
         //}
 
         #endregion

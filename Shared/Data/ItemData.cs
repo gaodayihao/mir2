@@ -16,7 +16,7 @@ public class ItemInfo
 
     public ushort Image, Durability;
 
-    public uint Price; 
+    public uint Price;
     public ushort StackSize = 1;
 
     public bool StartItem;
@@ -61,7 +61,7 @@ public class ItemInfo
         }
     }
 
-    public ItemInfo() 
+    public ItemInfo()
     {
         Stats = new Stats();
     }
@@ -239,8 +239,8 @@ public class ItemInfo
         if (CanMine) bools |= 0x10;
         if (GlobalDropNotify) bools |= 0x20;
         writer.Write(bools);
-        
-        writer.Write((short)Bind);        
+
+        writer.Write((short)Bind);
         writer.Write((short)Unique);
 
         writer.Write(RandomStatsId);
@@ -255,6 +255,37 @@ public class ItemInfo
         if (ToolTip != null)
             writer.Write(ToolTip);
 
+    }
+
+    public string RequiredClassFriendlyString()
+    {
+        if (RequiredClass == RequiredClass.None)
+        {
+            return GameLanguage.RequiredClassNone;
+        }
+        var classes = new List<string>();
+        if (RequiredClass.HasFlag(RequiredClass.Warrior))
+        {
+            classes.Add(GameLanguage.RequiredClassWarrior);
+        }
+        if (RequiredClass.HasFlag(RequiredClass.Wizard))
+        {
+            classes.Add(GameLanguage.RequiredClassWizard);
+        }
+        if (RequiredClass.HasFlag(RequiredClass.Taoist))
+        {
+            classes.Add(GameLanguage.RequiredClassTaoist);
+        }
+        if (RequiredClass.HasFlag(RequiredClass.Assassin))
+        {
+            classes.Add(GameLanguage.RequiredClassAssassin);
+        }
+        if (RequiredClass.HasFlag(RequiredClass.Archer))
+        {
+            classes.Add(GameLanguage.RequiredClassArcher);
+        }
+
+        return string.Join(", ", classes);
     }
 
     public static ItemInfo FromText(string text)
@@ -459,7 +490,7 @@ public class UserItem
         writer.Write(MaxDura);
 
         writer.Write(Count);
-       
+
         writer.Write(SoulBoundId);
         byte Bools = 0;
         if (Identified) Bools |= 0x01;

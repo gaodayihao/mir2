@@ -1,5 +1,5 @@
 using System.Drawing;
-﻿using Server.MirDatabase;
+using Server.MirDatabase;
 using Server.MirEnvir;
 using Server.MirNetwork;
 using Server.MirObjects.Monsters;
@@ -111,7 +111,7 @@ namespace Server.MirObjects
         public MountInfo Mount
         {
             get { return Info.Mount; }
-        }        
+        }
 
         public Reporting Report;
         public virtual bool CanMove
@@ -841,8 +841,8 @@ namespace Server.MirObjects
             RefreshStats();
             SetHP(Stats[Stat.HP]);
             SetMP(Stats[Stat.MP]);
-            
-            Broadcast(new S.ObjectLeveled { ObjectID = ObjectID });          
+
+            Broadcast(new S.ObjectLeveled { ObjectID = ObjectID });
         }
         public virtual Color GetNameColour(HumanObject human)
         {
@@ -977,7 +977,7 @@ namespace Server.MirObjects
 
                 message = GameLanguage.WeaponCurse;
                 chatType = ChatType.System;
-                
+
             }
             else if (item.AddedStats[Stat.Luck] <= 0 || Envir.Random.Next(10 * item.GetTotal(Stat.Luck)) == 0)
             {
@@ -1658,7 +1658,7 @@ namespace Server.MirObjects
         }
         public void CheckItem(UserItem item)
         {
-            Connection.CheckItem(item);         
+            Connection.CheckItem(item);
         }
         public void SetLevelEffects()
         {
@@ -1717,7 +1717,7 @@ namespace Server.MirObjects
         {
             if (HasUpdatedBaseStats == false)
             {
-                SendBaseStats();                
+                SendBaseStats();
                 HasUpdatedBaseStats = true;
             }
 
@@ -1910,7 +1910,7 @@ namespace Server.MirObjects
 
             if ((OldLooks_Armour != Looks_Armour) || (OldLooks_Weapon != Looks_Weapon) || (OldLooks_WeaponEffect != Looks_WeaponEffect) || (OldLooks_Wings != Looks_Wings) || (OldLight != Light))
             {
-                UpdateLooks(OldLooks_Weapon);                
+                UpdateLooks(OldLooks_Weapon);
             }
 
             if (Old_MountType != Mount.MountType)
@@ -2239,7 +2239,7 @@ namespace Server.MirObjects
 
                 var magic = new UserMagic(spelltype) { IsTempSpell = true };
                 Info.Magics.Add(magic);
-                SendMagicInfo(magic);                
+                SendMagicInfo(magic);
             }
         }
         public virtual void SendMagicInfo(UserMagic magic)
@@ -2456,8 +2456,8 @@ namespace Server.MirObjects
             Moved();
 
             CellTime = Envir.Time + 500;
-            ActionTime = Envir.Time + GetDelayTime(MoveDelay);          
-            
+            ActionTime = Envir.Time + GetDelayTime(MoveDelay);
+
             Enqueue(new S.UserLocation { Direction = Direction, Location = CurrentLocation });
             Broadcast(new S.ObjectWalk { ObjectID = ObjectID, Direction = Direction, Location = CurrentLocation });
             GetPlayerLocation();
@@ -2499,7 +2499,7 @@ namespace Server.MirObjects
                     concentration.Set("Interrupted", true);
                     UpdateConcentration(true, true);
                 }
-            }            
+            }
 
             if (Hidden && !Sneaking)
             {
@@ -2572,7 +2572,7 @@ namespace Server.MirObjects
                 InSafeZone = true;
             }
             else
-                InSafeZone = false;            
+                InSafeZone = false;
 
             CellTime = Envir.Time + 500;
             ActionTime = Envir.Time + GetDelayTime(MoveDelay);
@@ -2695,9 +2695,9 @@ namespace Server.MirObjects
             for (int i = 0; i < GroupMembers.Count; i++)
             {
                 PlayerObject member = GroupMembers[i];
-                
+
                 if (member.CurrentMap.Info.BigMap <= 0) continue;
-                  
+
                 member.Enqueue(new S.SendMemberLocation { MemberName = Name, MemberLocation = CurrentLocation });
                 Enqueue(new S.SendMemberLocation { MemberName = member.Name, MemberLocation = member.CurrentLocation });
             }
@@ -3139,6 +3139,10 @@ namespace Server.MirObjects
                     case Spell.TwinDrakeBlade:
                         magic = GetMagic(Spell.TwinDrakeBlade);
                         damageFinal = magic.GetDamage(damageBase);
+                        if (ob.CurrentPoison.HasFlag(PoisonType.Paralysis) || ob.CurrentPoison.HasFlag(PoisonType.LRParalysis))
+                        {
+                            damageFinal = (int)(damageFinal * 1.5f);
+                        }
                         TwinDrakeBlade = false;
                         action = new DelayedAction(DelayedType.Damage, Envir.Time + 400,
                             ob,                     //Object (Target)
@@ -4108,7 +4112,7 @@ namespace Server.MirObjects
         }
         private void TurnUndead(MapObject target, UserMagic magic)
         {
-            if(target != null &&
+            if (target != null &&
                target.Race == ObjectType.Monster &&
                target.Undead &&
                target.IsAttackTarget(this))
@@ -4120,8 +4124,8 @@ namespace Server.MirObjects
                         (master.BrownTime == 0 &&
                         !master.AtWar(this)))
                     {
-                            BrownTime = Envir.Time + Settings.Minute;
-                    }   
+                        BrownTime = Envir.Time + Settings.Minute;
+                    }
                 }
 
                 if (Envir.Random.Next(2) + Level - 1 <= target.Level)
@@ -4893,14 +4897,14 @@ namespace Server.MirObjects
                                 break;
                             }
 
-                            if(ob.Blocking)
+                            if (ob.Blocking)
                             {
                                 _blocking = true;
                                 break;
                             }
                         }
                     }
-                    
+
                     if (_blocking)
                     {
                         break;
@@ -4928,7 +4932,7 @@ namespace Server.MirObjects
                             }
                         }
 
-                        if(!_blocking)
+                        if (!_blocking)
                         {
                             _canDash = true;
                         }
@@ -4972,7 +4976,7 @@ namespace Server.MirObjects
 
                             if (IsAttackTarget(ob.Caster))
                             {
-                                switch(ob.Spell)
+                                switch (ob.Spell)
                                 {
                                     case Spell.FireWall:
                                         Attacked((PlayerObject)ob.Caster, ob.Value, DefenceType.MAC, false);
@@ -5945,7 +5949,7 @@ namespace Server.MirObjects
                 #endregion
 
                 #region Teleport
-                case Spell.Teleport:                                 
+                case Spell.Teleport:
                     if (CurrentMap.Info.NoTeleport)
                     {
                         ReceiveChat(("You cannot teleport on this map"), ChatType.System);
@@ -5953,7 +5957,7 @@ namespace Server.MirObjects
                     }
 
                     if (!MagicTeleport(magic))
-                        return;                    
+                        return;
 
                     AddBuff(BuffType.TemporalFlux, this, Settings.Second * 30, new Stats { [Stat.TeleportManaPenaltyPercent] = 30 });
                     LevelMagic(magic);
@@ -6011,7 +6015,7 @@ namespace Server.MirObjects
 
                 case Spell.Fury:
                     {
-                        AddBuff(BuffType.Fury, this, (Settings.Second * 60) + (magic.Level * 10000), new Stats { [Stat.AttackSpeed] = 4 });
+                        AddBuff(BuffType.Fury, this, Settings.Minute + (magic.Level * 10000), new Stats { [Stat.AttackSpeed] = 4 });
                         LevelMagic(magic);
                     }
                     break;
@@ -6650,7 +6654,7 @@ namespace Server.MirObjects
                         (Envir.Random.Next(Settings.PoisonAttackWeight) >= target.Stats[Stat.PoisonResist])) &&
                         (target.Level < Level + 10 && Envir.Random.Next(target.Race == ObjectType.Player ? 40 : 20) <= userMagic.Level + 1))
                     {
-                        target.ApplyPoison(new Poison { PType = PoisonType.Stun, Duration = target.Race == ObjectType.Player ? 2 : 2 + userMagic.Level, TickSpeed = 1000 }, this);
+                        target.ApplyPoison(new Poison { PType = PoisonType.Paralysis, Duration = target.Race == ObjectType.Player ? 2 : 2 + userMagic.Level, TickSpeed = 1000 }, this);
                         target.Broadcast(new S.ObjectEffect { ObjectID = target.ObjectID, Effect = SpellEffect.TwinDrakeBlade });
                     }
                 }
@@ -6868,7 +6872,7 @@ namespace Server.MirObjects
                 InSafeZone = true;
             }
             else
-                InSafeZone = false;            
+                InSafeZone = false;
 
             return true;
         }
@@ -6918,7 +6922,7 @@ namespace Server.MirObjects
             return true;
         }
         public override bool IsAttackTarget(MonsterObject attacker)
-        {            
+        {
             return true;
         }
 
@@ -6927,7 +6931,7 @@ namespace Server.MirObjects
             return true;
         }
         public override bool IsFriendlyTarget(MonsterObject ally)
-        {            
+        {
             return true;
         }
         public override void ReceiveChat(string text, ChatType type) { }
@@ -7247,7 +7251,7 @@ namespace Server.MirObjects
                     ownerBrowns = false;
 
                 if (ownerBrowns && !player.WarZone)
-                        p.Owner.BrownTime = Envir.Time + Settings.Minute;
+                    p.Owner.BrownTime = Envir.Time + Settings.Minute;
             }
 
             if ((p.PType == PoisonType.Green) || (p.PType == PoisonType.Red)) p.Duration = Math.Max(0, p.Duration - Stats[Stat.PoisonRecovery]);
@@ -8331,7 +8335,7 @@ namespace Server.MirObjects
             //MessageQueue.EnqueueDebugging(((ServerPacketIds)p.Index).ToString());
         }
         public virtual void Enqueue(Packet p, MirConnection c)
-        {            
+        {
             if (c == null)
             {
                 Enqueue(p);

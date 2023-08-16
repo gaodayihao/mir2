@@ -51,7 +51,7 @@ namespace Client.MirScenes
                 // Location = new Point(322, 44),
                 Parent = Background,
                 Size = new Size(155, 17),
-                Text = "Legend of Mir 2",
+                Text = GameLanguage.GameName,
                 DrawFormat = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
             };
 
@@ -208,7 +208,7 @@ namespace Client.MirScenes
             {
                 Location = new Point(-65, 0),
                 Parent = LastAccessLabel,
-                Text = "Last Online:",
+                Text = GameLanguage.LastOnline,
                 Size = new Size(100, 21),
                 DrawFormat = TextFormatFlags.Left | TextFormatFlags.VerticalCenter,
                 Border = true,
@@ -327,25 +327,25 @@ namespace Client.MirScenes
             switch (p.Result)
             {
                 case 0:
-                    MirMessageBox.Show("Creating new characters is currently disabled.");
+                    MirMessageBox.Show(GameLanguage.CreatingCharactersDisabled);
                     _character.Dispose();
                     break;
                 case 1:
-                    MirMessageBox.Show("Your Character Name is not acceptable.");
+                    MirMessageBox.Show(GameLanguage.InvalidCharacterName);
                     _character.NameTextBox.SetFocus();
                     break;
                 case 2:
                     MirMessageBox.Show("The gender you selected does not exist.\n Contact a GM for assistance.");
                     break;
                 case 3:
-                    MirMessageBox.Show("The class you selected does not exist.\n Contact a GM for assistance.");
+                    MirMessageBox.Show(GameLanguage.NoClass);
                     break;
                 case 4:
-                    MirMessageBox.Show("You cannot make anymore then " + Globals.MaxCharacterCount + " Characters.");
+                    MirMessageBox.Show(string.Format(GameLanguage.ToManyCharacters, Globals.MaxCharacterCount));
                     _character.Dispose();
                     break;
                 case 5:
-                    MirMessageBox.Show("A Character with this name already exists.");
+                    MirMessageBox.Show(GameLanguage.CharacterNameExists);
                     _character.NameTextBox.SetFocus();
                     break;
             }
@@ -353,7 +353,7 @@ namespace Client.MirScenes
         private void NewCharacter(S.NewCharacterSuccess p)
         {
             _character.Dispose();
-            MirMessageBox.Show("Your character was created successfully.");
+            MirMessageBox.Show(GameLanguage.CharacterCreated);
 
             Characters.Insert(0, p.CharInfo);
             _selected = 0;
@@ -364,7 +364,7 @@ namespace Client.MirScenes
         {
             if (_selected < 0 || _selected >= Characters.Count) return;
 
-            MirMessageBox message = new MirMessageBox(string.Format("Are you sure you want to Delete the character {0}?", Characters[_selected].Name), MirMessageBoxButtons.YesNo);
+            MirMessageBox message = new MirMessageBox(string.Format(GameLanguage.DeleteCharacter, Characters[_selected].Name), MirMessageBoxButtons.YesNo);
             int index = Characters[_selected].Index;
 
             message.YesButton.Click += (o1, e1) =>
@@ -407,7 +407,7 @@ namespace Client.MirScenes
         private void DeleteCharacter(S.DeleteCharacterSuccess p)
         {
             DeleteCharacterButton.Enabled = true;
-            MirMessageBox.Show("Your character was deleted successfully.");
+            MirMessageBox.Show(GameLanguage.CharacterDeleted);
 
             for (int i = 0; i < Characters.Count; i++)
                 if (Characters[i].Index == p.CharacterIndex)
