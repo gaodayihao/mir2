@@ -7,6 +7,7 @@ using S = ServerPackets;
 using C = ClientPackets;
 using Client.MirScenes.Dialogs;
 using System.Reflection;
+using static Client.MirObjects.MapObject;
 
 namespace Client.MirObjects
 {
@@ -1310,10 +1311,18 @@ namespace Client.MirObjects
 
                 ClientMagic magic;
 
-                if (Frame == null) return;
-
-                FrameInterval = Frame.Interval;
-                EffectFrameInterval = Frame.EffectInterval;
+                if (Frame == null) return; //Normal Attack  Added normal attack animation acceleration frame 1249-1260
+                if ((GameScene.User == this || GameScene.Hero == this) && CurrentAction == MirAction.Attack1)
+                {
+                    int NormalAttack = ((GameScene.User == this) ? User.AttackSpeed : Hero.AttackSpeed);
+                    FrameInterval = (int)(Frame.Interval * Math.Max(0.5f, NormalAttack / 1400f));
+                    EffectFrameInterval = (int)(Frame.Interval * Math.Max(0.5f, NormalAttack / 1400f));
+                }
+                else
+                {
+                    FrameInterval = Frame.Interval;
+                    EffectFrameInterval = Frame.EffectInterval;
+                }
 
                 if (this == User)
                 {
@@ -1473,7 +1482,7 @@ namespace Client.MirObjects
 
                                 if (Spell == Spell.FlashDash)
                                 {
-                                    GameScene.SpellTime = CMain.Time + 250;
+                                    GameScene.SpellTime = CMain.Time + 500;
                                     MapControl.NextAction = CMain.Time;
                                 }
                                 else
@@ -1594,7 +1603,7 @@ namespace Client.MirObjects
                                 FrameInterval = (int)(FrameInterval * 0.46f); //46% Animation Speed
                                 EffectFrameInterval = (int)(EffectFrameInterval * 0.46f);
 
-                                SoundManager.PlaySound(20000 + (ushort)Spell * 10 + 1);
+                                SoundManager.PlaySound(20000 + (ushort)Spell * 10 + 6);
                                 break;
                             case Spell.TwinDrakeBlade:
                                 FrameInterval = FrameInterval * 9 / 10; //80% Animation Speed
@@ -2120,6 +2129,12 @@ namespace Client.MirObjects
                             #region CounterAttack
 
                             case Spell.CounterAttack:
+                                if (GameScene.User == this || GameScene.Hero == this)
+                                {
+                                    int num8 = ((GameScene.User == this) ? User.AttackSpeed : Hero.AttackSpeed);
+                                    FrameInterval = (int)(Frame.Interval * Math.Max(0.5f, num8 / 1400f));
+                                    EffectFrameInterval = (int)(Frame.Interval * Math.Max(0.5f, num8 / 1400f));
+                                }
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10 + 5);
                                 Effects.Add(new Effect(Libraries.Magic, 3480 + (int)Direction * 10, 10, 10 * FrameInterval, this));
                                 Effects.Add(new Effect(Libraries.Magic3, 140, 2, 2 * FrameInterval, this));
