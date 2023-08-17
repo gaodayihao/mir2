@@ -11,6 +11,7 @@ using C = ClientPackets;
 using Effect = Client.MirObjects.Effect;
 using Client.MirScenes.Dialogs;
 using Client.Utils;
+using System.Diagnostics;
 
 namespace Client.MirScenes
 {
@@ -10362,7 +10363,6 @@ namespace Client.MirScenes
 
             MapObject.MouseObjectID = 0;
             MapObject.TargetObjectID = 0;
-            MapObject.TargetObjectID = 0;
             MapObject.MagicObjectID = 0;
 
             if (M2CellInfo != null)
@@ -11595,7 +11595,9 @@ namespace Client.MirScenes
                                 return;
                             }
                         }
-                        if ((CanWalk(direction, out direction)) && (CheckDoorOpen(Functions.PointMove(User.CurrentLocation, direction, 1))))
+                        if (MapObject.MouseObject is not { Race is ObjectType.Monster or ObjectType.Player or ObjectType.Hero } 
+                            && CanWalk(direction, out direction) 
+                            && CheckDoorOpen(Functions.PointMove(User.CurrentLocation, direction, 1)))
                         {
 
                             User.QueuedAction = new QueuedAction { Action = MirAction.Walking, Direction = direction, Location = Functions.PointMove(User.CurrentLocation, direction, 1) };
