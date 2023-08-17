@@ -11595,7 +11595,7 @@ namespace Client.MirScenes
                                 return;
                             }
                         }
-                        if (MapObject.MouseObject is not { Race is ObjectType.Monster or ObjectType.Player or ObjectType.Hero } 
+                        if (MapObject.MouseObject is not { Race: ObjectType.Monster or ObjectType.Player or ObjectType.Hero } 
                             && CanWalk(direction, out direction) 
                             && CheckDoorOpen(Functions.PointMove(User.CurrentLocation, direction, 1)))
                         {
