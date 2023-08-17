@@ -259,10 +259,6 @@ public class ItemInfo
 
     public string RequiredClassFriendlyString()
     {
-        if (RequiredClass == RequiredClass.None)
-        {
-            return GameLanguage.RequiredClassNone;
-        }
         var classes = new List<string>();
         if (RequiredClass.HasFlag(RequiredClass.Warrior))
         {
@@ -285,7 +281,7 @@ public class ItemInfo
             classes.Add(GameLanguage.RequiredClassArcher);
         }
 
-        return string.Join(", ", classes);
+        return string.Join("/", classes);
     }
 
     public static ItemInfo FromText(string text)

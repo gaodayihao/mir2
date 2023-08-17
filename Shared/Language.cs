@@ -269,12 +269,12 @@ public class GameLanguage
                          Spell_Fury = "Fury \n\nMana Cost {2}\n\nIncreases the warriors Accuracy for a set period of time.\n\nCurrent Skill Level {0}\nNext Level {1}",
                          Spell_SlashingBurst = "SlashingBurst \n\nMana Cost {2}\n\nAllows The Warrior to Jump 1 Space Over a Obejct or Monster.\n\nCurrent Skill Level {0}\nNext Level {1}",
                          Spell_BladeAvalanche = "Ice Damage\nBladeAvalanche \n\n3-Way Thrusting.\nCurrent Skill Level {0}\nNext Level {1}",
-                         RequiredClassNone = "None",
                          RequiredClassWarrior = "Warrior",
                          RequiredClassWizard = "Wizard",
                          RequiredClassTaoist = "Taoist",
                          RequiredClassAssassin = "Assassin",
                          RequiredClassArcher = "Archer",
+                         LastOnlineNever = "Never",
                          SkillModeDash = "[Skill Mode: ~]",
                          SkillModeControl = "[Skill Mode: Ctrl]";
 
@@ -577,8 +577,7 @@ public class GameLanguage
         NewMovementStyle = reader.ReadString("Language", "NewMovementStyle", NewMovementStyle);
         OldMovementStyle = reader.ReadString("Language", "OldMovementStyle", OldMovementStyle);
         Keyboard = reader.ReadString("Language", "Keyboard", Keyboard);
-
-        RequiredClassNone = reader.ReadString("Language", "RequiredClassNone", RequiredClassNone);
+        
         RequiredClassWarrior = reader.ReadString("Language", "RequiredClassWarrior", RequiredClassWarrior);
         RequiredClassWizard = reader.ReadString("Language", "RequiredClassWizard", RequiredClassWizard);
         RequiredClassTaoist = reader.ReadString("Language", "RequiredClassTaoist", RequiredClassTaoist);
@@ -602,6 +601,8 @@ public class GameLanguage
         Spell_Fury = reader.ReadString("Language", "Spell_Fury", Spell_Fury);
         Spell_SlashingBurst = reader.ReadString("Language", "Spell_SlashingBurst", Spell_SlashingBurst);
         Spell_BladeAvalanche = reader.ReadString("Language", "Spell_BladeAvalanche", Spell_BladeAvalanche);
+
+        LastOnlineNever = reader.ReadString("Language", "LastOnlineNever", LastOnlineNever);
     }
 
 
@@ -856,8 +857,7 @@ public class GameLanguage
         reader.Write("Language", "NewMovementStyle", NewMovementStyle);
         reader.Write("Language", "OldMovementStyle", OldMovementStyle);
         reader.Write("Language", "Keyboard", Keyboard);
-
-        reader.Write("Language", "RequiredClassNone", RequiredClassNone);
+        
         reader.Write("Language", "RequiredClassWarrior", RequiredClassWarrior);
         reader.Write("Language", "RequiredClassWizard", RequiredClassWizard);
         reader.Write("Language", "RequiredClassTaoist", RequiredClassTaoist);
@@ -881,6 +881,8 @@ public class GameLanguage
         reader.Write("Language", "Spell_Fury", Spell_Fury);
         reader.Write("Language", "Spell_SlashingBurst", Spell_SlashingBurst);
         reader.Write("Language", "Spell_BladeAvalanche", Spell_BladeAvalanche);
+
+        reader.Write("Language", "LastOnlineNever", LastOnlineNever);
     }
 
 
