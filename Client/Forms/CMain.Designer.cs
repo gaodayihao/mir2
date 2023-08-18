@@ -37,9 +37,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(504, 480);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
+            MaximizeBox = false;
             MinimumSize = new Size(348, 346);
             Name = "CMain";
             Text = "Legend of Mir";
