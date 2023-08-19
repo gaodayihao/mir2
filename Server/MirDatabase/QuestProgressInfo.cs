@@ -270,8 +270,6 @@ namespace Server.MirDatabase
 
         public bool CheckCompleted()
         {
-            UpdateTasks();
-
             bool canComplete = true;
 
             for (int j = 0; j < KillTaskCount.Count; j++)
@@ -295,7 +293,11 @@ namespace Server.MirDatabase
                 canComplete = false;
             }
 
-            if (!canComplete) return false;
+            if (!canComplete)
+            {
+                UpdateTasks();
+                return false;
+            }
 
             if (!Completed)
             {
@@ -307,6 +309,7 @@ namespace Server.MirDatabase
                 }
             }
 
+            UpdateTasks();
             return true;
         }
 
