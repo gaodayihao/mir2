@@ -97,6 +97,7 @@ namespace Client.MirSounds
                 if (Sounds[i].Index != index) continue;
                 
                 Sounds[i].Stop();
+                Sounds.RemoveAt(i);
                 return;
             }
         }
