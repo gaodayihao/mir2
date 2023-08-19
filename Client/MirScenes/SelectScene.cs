@@ -524,7 +524,7 @@ namespace Client.MirScenes
                         break;
                 }
 
-                LastAccessLabel.Text = Characters[_selected].LastAccess == DateTime.MinValue ? GameLanguage.LastOnlineNever : Characters[_selected].LastAccess.ToLocalTime().ToString();
+                LastAccessLabel.Text = Characters[_selected].LastAccess == DateTime.MinValue ? GameLanguage.LastOnlineNever : Characters[_selected].LastAccess.ToString();
                 LastAccessLabel.Visible = true;
                 LastAccessLabelLabel.Visible = true;
                 StartGameButton.Enabled = true;
