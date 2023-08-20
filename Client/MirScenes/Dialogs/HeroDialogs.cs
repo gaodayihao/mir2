@@ -649,12 +649,10 @@ namespace Client.MirScenes.Dialogs
 
             //cast MaxExperience to double to force division to 2 decimal place
             double percent = Experience / (double)MaxExperience * 100;
-
-            var test = (int)ExperienceBar.Size.Width * percent;
-
+            
             Rectangle section = new()
             {
-                Size = new Size((int)(ExperienceBar.Size.Width * percent), ExperienceBar.Size.Height)
+                Size = ExperienceBar.Size with { Width = (int)(ExperienceBar.Size.Width * percent / 100) }
             };
 
             ExperienceBar.Library.Draw(ExperienceBar.Index, section, ExperienceBar.DisplayLocation, Color.White, false);
@@ -671,7 +669,7 @@ namespace Client.MirScenes.Dialogs
 
             Rectangle section = new Rectangle
             {
-                Size = new Size((int)(HealthBar.Size.Width * percent), HealthBar.Size.Height)
+                Size = HealthBar.Size with { Width = (int)(HealthBar.Size.Width * percent) }
             };
 
             HealthBar.Library.Draw(HealthBar.Index, section, HealthBar.DisplayLocation, Color.White, false);
